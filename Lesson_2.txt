@@ -1,0 +1,38 @@
+﻿--Практическое задание 2
+-- Установил MySQL. 
+-- В директории C:\Program Files\MySQL\MySQL Server 8.0 создал файл my.cnf. Содержимое файла:
+[mysql]
+user=root
+password=Master
+
+-- Установил DBeaver. Подключился к серверу MySQL
+
+--Зашел в консольный клиент
+mysql -u root -p
+
+-- Просмотриваю существующие БД 
+SHOW DATABASES;
+
+--Создаю базу данных
+CREATE DATABASE example;
+
+-- ------------------------------------------------------------------------
+
+USE example;
+
+--Создаем таблицу Users из 2-х столбцов
+CREATE TABLE users (
+  id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  name VARCHAR(100) UNIQUE
+);
+
+
+--В командной строке зоздал дамп базы данных example из предыдущего задания
+C:\Program Files\MySQL\MySQL Server 8.0\bin>mysqldump -u root -p example > C:\Users\SkiF\Documents\sample.sql
+Enter password: *********
+
+--В клиенте создаем пустую базу данных sample
+CREATE DATABASE sample;
+
+--Развернули содержимое дампа в новую базу данных sample
+C:\Program Files\MySQL\MySQL Server 8.0\bin>mysql sample < C:\Users\SkiF\Documents\sample.sql
